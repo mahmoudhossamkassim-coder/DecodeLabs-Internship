@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 1: Responsive Architecture</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        // Enforce the flow: If not logged in, redirect to Signup page
+        if (!localStorage.getItem('loggedIn')) {
+            window.location.href = 'signup.html';
+        }
+    </script>
+</head>
+<body>
+    <div class="layout-grid">
+        <header class="header-main">
+            <nav class="navbar" aria-label="Main Navigation">
+                <div class="logo">DecodeLabs</div>
+                <ul class="nav-links">
+                    <li><a href="#vision">Vision</a></li>
+                    <li><a href="#pillars">Pillars</a></li>
+                    <li><a href="#roadmap">Roadmap</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <a href="login.html" class="btn-secondary" style="margin-right: 10px;">Login</a>
+                    <a href="signup.html" class="btn-primary">Sign Up</a>
+                </div>
+                <button class="mobile-menu-toggle" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="hamburger"></span>
+                </button>
+            </nav>
+        </header>
+
+        <aside class="sidebar">
+            <nav class="side-nav" aria-label="Sidebar Navigation">
+                <h3>Architecture</h3>
+                <ul>
+                    <li><a href="#html5">HTML5 Landmarks</a></li>
+                    <li><a href="#css3">CSS Grid / Flex</a></li>
+                    <li><a href="#js">JS Logic</a></li>
+                    <li><a href="#audit">Audit & Quality</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <article>
+                <section class="hero" id="vision">
+                    <h1>The Future of Digital Craft</h1>
+                    <p>Construct a digital experience that honors the Mobile-First paradigm. The web is a dynamic, inclusive information system.</p>
+                </section>
+                
+                <section class="content-grid" id="pillars">
+                    <h2>The Pillars of Implementation</h2>
+                    <div class="grid-cards">
+                        <div class="card">
+                            <h3>Semantic Integrity</h3>
+                            <p>Code for AI and Accessibility. HTML5 landmarks are the bedrock of structural meaning.</p>
+                        </div>
+                        <div class="card">
+                            <h3>2025 UI/UX Compliance</h3>
+                            <p>Shift from sterile tech to Warmth & Grounding. Responsive styling using Grid, Flexbox, and fluid typography.</p>
+                        </div>
+                        <div class="card">
+                            <h3>Universal Access</h3>
+                            <p>Strict WCAG adherence. Proper semantics provide a Table of Contents for screen readers.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-text" id="roadmap">
+                    <h2>The Execution Roadmap</h2>
+                    <p>The absolute best way to master Full Stack Development is through hands-on practice, not just theory. Take these milestones one by one, experiment with unique solutions, and treat every responsive breakpoint as a learning opportunity.</p>
+                </section>
+
+                <section class="content-text" id="html5" style="margin-top: 2rem;">
+                    <h2>HTML5 Landmarks</h2>
+                    <p>HTML5 introduces semantic tags like <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;article&gt;</code>, and <code>&lt;footer&gt;</code>. These landmarks clearly define the structure of a web page, making it much easier for screen readers and search engines to understand the core content, vastly improving both accessibility and SEO.</p>
+                </section>
+
+                <section class="content-text" id="css3" style="margin-top: 2rem;">
+                    <h2>CSS Grid & Flexbox</h2>
+                    <p>Modern CSS layout modules like Grid and Flexbox revolutionized web design. <strong>Flexbox</strong> is designed for 1-dimensional layouts (rows or columns), perfect for aligning items within a container. <strong>CSS Grid</strong> handles 2-dimensional layouts, giving you precise control over both rows and columns simultaneously, enabling complex, responsive designs without the need for cumbersome layout hacks.</p>
+                </section>
+
+                <section class="content-text" id="js" style="margin-top: 2rem;">
+                    <h2>JS Logic</h2>
+                    <p>JavaScript (JS) acts as the brain of your web application. While HTML provides structure and CSS provides style, JS provides interactivity. It allows you to dynamically manipulate the DOM, validate forms, handle user events, and securely communicate with backends using asynchronous requests like <code>fetch()</code>.</p>
+                </section>
+
+                <section class="content-text" id="audit" style="margin-top: 2rem; margin-bottom: 2rem;">
+                    <h2>Audit & Quality</h2>
+                    <p>Quality assurance is paramount in modern web development. Tools like Chrome's Lighthouse allow developers to audit their applications for performance bottlenecks, accessibility issues (WCAG compliance), SEO optimizations, and progressive web app (PWA) standards to ensure a robust user experience across all devices.</p>
+                </section>
+            </article>
+        </main>
+
+        <footer class="footer-main">
+            <p>&copy; 2026 DecodeLabs | Industrial Training Kit | Project 1: Go Build.</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            if (localStorage.getItem('loggedIn')) {
+                const username = localStorage.getItem('username') || localStorage.getItem('userEmail') || 'User';
+                
+                const authContainer = document.querySelector('.auth-buttons');
+                if (authContainer) {
+                    authContainer.innerHTML = `
+                        <span style="margin-right: 15px; font-weight: 600; color: var(--clr-mocha-mousse);">Hello, ${username}</span>
+                        <button id="logoutBtn" class="btn-logout">Logout</button>
+                    `;
+                    
+                    document.getElementById('logoutBtn').addEventListener('click', () => {
+                        localStorage.removeItem('loggedIn');
+                        localStorage.removeItem('userEmail');
+                        localStorage.removeItem('username');
+                        window.location.href = 'login.html';
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>
